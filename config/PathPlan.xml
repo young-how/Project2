@@ -1,0 +1,208 @@
+<simulator>
+    <env>
+        <Env_Type>PathPlan_Env</Env_Type>
+        <len>500</len>
+        <width>500</width>
+        <h>1</h>
+        <eps>0.1</eps>
+        <Is_On_Policy>0</Is_On_Policy>
+        <FL_Loop>10</FL_Loop>
+        <print_loop>2</print_loop>
+        <num_UAV>1</num_UAV>
+        <Agent>
+            <Agent_Type>ZDJ</Agent_Type>
+            <name>ZDJ</name>
+            <position>
+                <x>0</x>
+                <y>0</y>
+                <z>0</z>
+            </position>
+            <Min_V>0.6</Min_V>
+            <Max_V>0.68</Max_V>
+            <Steering_angle>30</Steering_angle>   
+            <Acceration>20</Acceration> 
+            <Max_Step>100</Max_Step>
+
+            <!-- <Trainer>
+                <Trainer_Type>DuelingDQN_Trainer</Trainer_Type>
+                <Is_Train>0</Is_Train>
+                <NetWork>VAnet3</NetWork>
+                <h>1</h>
+                <w>108</w>
+                <channel>1</channel>
+                <hiden_dim>128</hiden_dim>
+                <output>17</output>
+                <replay_size>10000</replay_size>
+                <LEARNING_RATE>0.0001</LEARNING_RATE>
+                <Batch_Size>128</Batch_Size>
+                <gamma>0.99</gamma>
+                <max_epoch>10000</max_epoch>
+                <save_loop>5</save_loop>
+            </Trainer> -->
+
+            <!-- <Trainer>
+                <Trainer_Type>SAC_Trainer</Trainer_Type>
+                <Is_Train>0</Is_Train>
+                <actor>
+                    <NetWork>PolicyNet_SAC</NetWork>
+                    <h>1</h>
+                    <w>40</w> 
+                    <channel>1</channel>
+                    <hiden_dim>128</hiden_dim>
+                    <output>8</output>
+                    <lr>0.0005</lr>
+                </actor>
+                <critic>
+                    <NetWork>QValueNet_SAC</NetWork>
+                    <h>1</h>
+                    <w>40</w>
+                    <channel>1</channel>
+                    <hiden_dim>128</hiden_dim>
+                    <output>8</output>
+                    <lr>0.0005</lr>
+                </critic>
+                <SAC_param>
+                    <IS_Continuous>0</IS_Continuous>
+                    <alpha_lr>0.0001</alpha_lr>
+                    <target_entropy>-1</target_entropy>
+                    <gamma>0.98</gamma>
+                    <tau>0.05</tau>
+                </SAC_param>                 
+                <replay_size>10000</replay_size>
+                <LEARNING_RATE>0.005</LEARNING_RATE>
+                <Batch_Size>128</Batch_Size>
+                <max_epoch>10000</max_epoch>
+                <save_loop>10</save_loop>
+            </Trainer> -->
+
+            <!-- <Trainer>
+                <Trainer_Type>PPO_Trainer</Trainer_Type>
+                <Is_Train>1</Is_Train>
+                <actor>
+                    <NetWork>PolicyNet_PPO</NetWork>
+                    <h>1</h>
+                    <w>5</w> 
+                    <channel>1</channel>
+                    <hiden_dim>64</hiden_dim>
+                    <output>8</output>
+                    <lr>0.001</lr>
+                </actor>
+
+                <critic>
+                    <NetWork>QValueNet_PPO</NetWork>
+                    <h>1</h>
+                    <w>5</w>
+                    <channel>1</channel>
+                    <hiden_dim>64</hiden_dim>
+                    <output>1</output>
+                    <lr>0.01</lr>
+                </critic>
+
+                <PPO_param>
+                    <lmbda>0.95</lmbda>
+                    <epochs>20</epochs>
+                    <eps>0.2</eps>
+                </PPO_param>
+                
+                <replay_size>10000</replay_size>
+                <LEARNING_RATE>0.005</LEARNING_RATE>
+                <Batch_Size>128</Batch_Size>
+                <max_epoch>10000</max_epoch>
+                <save_loop>10</save_loop>
+            </Trainer> -->
+
+            <Trainer>
+                <Trainer_Type>SAC_Trainer</Trainer_Type>
+                <Is_Train>1</Is_Train>
+                <actor>
+                    <NetWork>PolicyNetContinuous_SAC</NetWork>
+                    <h>1</h>
+                    <w>5</w> 
+                    <channel>1</channel>
+                    <action_bound>1</action_bound>
+                    <hiden_dim>64</hiden_dim>
+                    <output>1</output>
+                    <lr>0.0001</lr>
+                </actor>
+
+                <critic>
+                    <NetWork>QValueNetContinuous_SAC</NetWork>
+                    <h>1</h>
+                    <w>5</w>
+                    <channel>1</channel>
+                    <hiden_dim>64</hiden_dim>
+                    <output>1</output>
+                    <lr>0.001</lr>
+                </critic>
+
+                <SAC_param>
+                    <IS_Continuous>1</IS_Continuous>
+                    <alpha_lr>0.0001</alpha_lr>
+                    <target_entropy>1</target_entropy>
+                    <gamma>0.99</gamma>
+                    <tau>0.05</tau>
+                </SAC_param>
+                
+                <replay_size>10000</replay_size>
+                <LEARNING_RATE>0.0005</LEARNING_RATE>
+                <Batch_Size>64</Batch_Size>
+                <max_epoch>10000</max_epoch>
+                <save_loop>10</save_loop>
+            </Trainer>
+
+            <!-- <Trainer>
+                <Trainer_Type>DuelingDQN_Trainer</Trainer_Type>
+                <Is_Train>1</Is_Train>
+                <NetWork>VAnet2</NetWork>
+                <h>1</h>
+                <w>10</w>
+                <channel>1</channel>
+                <hiden_dim>64</hiden_dim>
+                <output>8</output>
+                <replay_size>1000</replay_size>
+                <LEARNING_RATE>0.00001</LEARNING_RATE>
+                <Batch_Size>128</Batch_Size>
+                <gamma>0.9</gamma>
+                <max_epoch>10000</max_epoch>
+                <save_loop>5</save_loop>
+            </Trainer> -->
+            <!-- <Trainer>
+                <Trainer_Type>DDPG_Trainer</Trainer_Type>
+                <Is_Train>1</Is_Train>
+                <actor>
+                    <NetWork>PolicyNet_DDPG</NetWork>
+                    <h>1</h>
+                    <w>10</w> 
+                    <channel>1</channel>
+                    <hiden_dim>128</hiden_dim>
+                    <output>1</output>
+                    <lr>0.0003</lr>
+                </actor>
+
+                <critic>
+                    <NetWork>QValueNet_DDPG</NetWork>
+                    <h>1</h>
+                    <w>10</w>
+                    <channel>1</channel>
+                    <hiden_dim>128</hiden_dim>
+                    <output>1</output>
+                    <lr>0.003</lr>
+                </critic>
+                
+                <replay_size>1000</replay_size>
+                <LEARNING_RATE>0.0005</LEARNING_RATE>
+                <Batch_Size>64</Batch_Size>
+                <gamma>0.9</gamma>
+                <tau>0.005</tau>
+                <max_epoch>10000</max_epoch>
+                <save_loop>10</save_loop>
+            </Trainer> -->
+        </Agent>
+    </env>
+    
+    <record_epo>10</record_epo>
+    <num_episodes>500</num_episodes> 
+    <max_eps_episode>1000</max_eps_episode>
+    <min_eps>0.1</min_eps>
+    <TARGET_UPDATE>3</TARGET_UPDATE>
+</simulator>
